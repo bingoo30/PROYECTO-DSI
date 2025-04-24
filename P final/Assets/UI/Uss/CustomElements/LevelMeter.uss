@@ -1,0 +1,70 @@
+.xp-meter__background {
+    width: 270px;
+    height: 270px;
+    display: flex;
+    align-items: center;
+    background-color: rgba(190, 123, 8, 0);
+    justify-content: center;
+    position: absolute;
+    top: -3px;
+    left: 10px;
+}
+
+.xp-meter__counter-group {
+    width: 270px;
+    height: 270px;
+    background-color: rgb(255, 255, 255);
+    justify-content: flex-end;
+    position: absolute;
+}
+
+.xp-meter__icon {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background-color: rgba(52, 152, 219, 0.63);
+}
+
+.xp-meter__level-number {
+    position: relative;
+    font-size: 56px;
+    -unity-text-align: upper-center;
+    -unity-font-style: bold;
+    color: rgb(255, 255, 255);
+    top: 31%;
+}
+
+.xp-meter__radial-counter {
+    width: 90%;
+    height: 90%;
+    color: rgb(255, 255, 255);
+    background-color: rgb(52, 73, 94);
+    justify-content: center;
+    align-items: auto;
+    -unity-text-align: upper-left;
+    left: 5%;
+    bottom: 5%;
+}
+
+.level-meter__container {
+    width: 270px;
+    height: 26%;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    margin-top: 0;
+    margin-left: 0;
+    scale: 0.9 0.9;
+    margin-right: 0;
+    margin-bottom: 0;
+    position: relative;
+    transform-origin: left;
+    -unity-font-definition: none;
+    display: flex;
+    top: 1%;
+    left: 3%;
+    min-height: 26%;
+    max-height: 26%;
+    flex-basis: 26%;
+    flex-grow: 1;
+}
