@@ -1,5 +1,4 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
-    <Style src="project://database/Assets/UI%20Toolkit/MenuDerrota.uss?fileID=7433441132597879392&amp;guid=1dca931e780cac648bc2dfddfe03ed21&amp;type=3#MenuDerrota" />
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
     <ui:VisualElement name="MenuDerrota" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
         <ui:VisualElement name="Fondo" style="flex-grow: 1; background-color: rgba(56, 56, 56, 0); width: 807px; background-image: url(&apos;project://database/Assets/Sprites/MenuDerrota.png?fileID=2800000&amp;guid=e1f21fb5eb5b94b4abd80bb89f1f2bc8&amp;type=3#MenuDerrota&apos;); justify-content: center; align-self: center; align-items: center; flex-wrap: wrap; flex-direction: column;">
             <ui:VisualElement name="EspacioBlanco" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); height: 14%; min-height: 10%; min-width: 10%; max-height: 26%;" />
