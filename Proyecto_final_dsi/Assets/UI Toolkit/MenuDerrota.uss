@@ -20,7 +20,7 @@
     -unity-font-definition: initial;
     font-size: 25px;
     color: rgb(104, 78, 55);
-    -unity-text-align: middle-left;
+    -unity-text-align: middle-center;
 }
 
 .button:hover {
