@@ -1,0 +1,30 @@
+.botonI {
+    width: 385px;
+    height: 200px;
+    background-color: rgba(255, 244, 244, 0);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    background-image: url('project://database/Assets/Sprites/botonInicial.png?fileID=2800000&guid=41808b0b7f3c312428ec3fe5de51d266&type=3#botonInicial');
+    -unity-background-scale-mode: scale-and-crop;
+    left: 39.1%;
+    top: 22%;
+    font-size: 80px;
+    color: rgb(252, 187, 130);
+    -unity-font-style: bold;
+    cursor: initial;
+}
+
+.botonI:hover {
+    scale: 1.05 1.05;
+    -unity-background-image-tint-color: rgb(178, 178, 178);
+    font-size: 90px;
+    color: rgb(255, 208, 169);
+    -unity-font-style: bold;
+    transition-property: all;
+    transition-duration: 0.1s;
+    transition-timing-function: ease;
+    transition-delay: 0s;
+    cursor: initial;
+}
