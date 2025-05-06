@@ -66,102 +66,100 @@ public class SceneManager : MonoBehaviour
     private void OnEnable()
     {
         UIDocument uidoc = GetComponent<UIDocument>();
-        VisualElement rootve = uidoc.rootVisualElement;
+        VisualElement root = uidoc.rootVisualElement;
 
 
         VisualTreeAsset visualTreeAsset = Resources.Load<VisualTreeAsset>("templates/MenuDerrota");
 
-        _initial = rootve.Q("InitialMenu");
-        _settings = rootve.Q("Settings");
-        _exit = rootve.Q("Exit");
-        _game = rootve.Q("Game");
-
-        Label text = rootve.Q<Label>("ContenidoAzul");
-        Label text2 = rootve.Q<Label>("Explicacion");
-        Debug.Log(text.name);
-
-        text.text = @"<gradient=""colorGradient""> Difficulty </gradient>";
-        text2.text = @"<rotate =""12""><gradient=""colorGradient2""> Puedes jugar con las tres dificultades seleccionadas, a cada minuto se cambia.</rotate></size>";
+        _initial_menu = root.Q<VisualElement>("InitialMenu");
+        _levels_menu = root.Q<VisualElement>("LevelsMenu");
+        _game_start_menu = root.Q<VisualElement>("GameStartMenu");
+        _pause_menu = root.Q<VisualElement>("PauseMenu");
+        _victory_menu = root.Q<VisualElement>("VictoryMenu");
+        _game_over_menu = root.Q<VisualElement>("GameOverMenu");
+        _game_menu = root.Q<VisualElement>("GameMenu");
 
 
-        _startButton = _initial.Q("startButton");
-        _settingsButton = _initial.Q("settingsButton");
-        _exitButton = _initial.Q("exitButton");
-
-        _startButton.focusable = true;
-        _settingsButton.focusable = true;
-        _exitButton.focusable = true;
-
-        _contenidoBlue = _settings.Q("contenidoBlue");
-        _contenidoYellow = _settings.Q("contenidoYellow");
-        _contenidoGreen = _settings.Q("contenidoGreen");
-
-        _pestanaBlue = _settings.Q("pestanaBlue");
-        _pestanaYellow = _settings.Q("pestanaYellow");
-        _pestanaGreen = _settings.Q("pestanaGreen");
-
-        _settingbackButton = _settings.Q("backButton");
-
-        _gameBackButton = _game.Q("backButton");
-
-
-        //UQueryBuilder<VisualElement> builder = new (rootve);
-
-
-        //List<VisualElement> lista_ve = rootve.Query(className: "blue").ToList();
-
-
-        //lista_ve.ForEach(element => { Debug.Log(element.name);
-        //    element.AddToClassList("yellow");
-        //});
-
-        _gameBackButton.RegisterCallback<ClickEvent>(ev => {
-            Debug.Log("back");
-            NoContenido();
-            backToInitial();
-
-        });
-        _settingbackButton.RegisterCallback<ClickEvent>(ev => {
-            Debug.Log("back");
-            NoContenido();
-            backToInitial();
+        _all_visual_elements.AddRange(new[]
+        {     
+            _initial_menu, _levels_menu, _game_start_menu,
+            _pause_menu, _victory_menu, _game_over_menu, _game_menu
         });
 
-        _startButton.RegisterCallback<ClickEvent>(ev =>
-        {
-            Debug.Log("Start");
-            NoContenido();
-            _game.style.display = DisplayStyle.Flex;
+     
+        // Botones Menú Inicial
+        _startButton_initial_menu = _initial_menu.Q("startButton");
+        _exitButton_initial_menu = _initial_menu.Q("exitButton");
+
+        // Game Start Menu
+        _startButton_game_start_menu = _game_start_menu.Q("startButton");
+        _exitButton_game_start_menu = _game_start_menu.Q("exitButton");
+
+        // Pause Menu
+        _continueutton_pause_menu = _pause_menu.Q("continueButton");
+        _exitButton_pause_menu = _pause_menu.Q("exitButton");
+
+        // Victory Menu
+        _next_victory_menu = _victory_menu.Q("nextButton");
+        _exitButton_victory_menu = _victory_menu.Q("exitButton");
+
+        // Game Over Menu
+        _retry_game_over_menu = _game_over_menu.Q("retryButton");
+        _exitButton_game_over_menu = _game_over_menu.Q("exitButton");
+
+
+        _startButton_initial_menu.RegisterCallback<ClickEvent>(ev => {
+            Debug.Log("Start -> Game Start Menu");
+            ShowMenu(_game_start_menu);
         });
 
-        _exitButton.RegisterCallback<ClickEvent>(ev => {
-            Debug.Log("_exitButton");
-            NoContenido();
+        _exitButton_initial_menu.RegisterCallback<ClickEvent>(ev => {
+            Debug.Log("Exit from Initial Menu");
+            Application.Quit();
         });
 
-        _settingsButton.RegisterCallback<ClickEvent>(ev => {
-            Debug.Log("_settingsButton");
-            NoContenido();
-            _settings.style.display = DisplayStyle.Flex;
-            _contenidoBlue.style.display = DisplayStyle.Flex;
+        // GAME START MENU
+        _startButton_game_start_menu.RegisterCallback<ClickEvent>(ev => {
+            Debug.Log("Game Start -> Game");
+            ShowMenu(_game_menu);
         });
 
-        _pestanaBlue.RegisterCallback<ClickEvent>(ev => {
-            Debug.Log("_pestanaBlue");
-            NoContenidoSttings();
-            _contenidoBlue.style.display = DisplayStyle.Flex;
+        _exitButton_game_start_menu.RegisterCallback<ClickEvent>(ev => {
+            Debug.Log("Exit from Game Start");
+            ShowMenu(_initial_menu);
         });
 
-        _pestanaYellow.RegisterCallback<ClickEvent>(ev => {
-            Debug.Log("_pestanaYellow");
-            NoContenidoSttings();
-            _contenidoYellow.style.display = DisplayStyle.Flex;
+        // PAUSE MENU
+        _continueutton_pause_menu.RegisterCallback<ClickEvent>(ev => {
+            Debug.Log("Continue from Pause");
+            ShowMenu(_game_menu);
         });
 
-        _pestanaGreen.RegisterCallback<ClickEvent>(ev => {
-            Debug.Log("_pestanaGreen");
-            NoContenidoSttings();
-            _contenidoGreen.style.display = DisplayStyle.Flex;
+        _exitButton_pause_menu.RegisterCallback<ClickEvent>(ev => {
+            Debug.Log("Exit from Pause to Initial");
+            ShowMenu(_initial_menu);
+        });
+
+        // VICTORY MENU
+        _next_victory_menu.RegisterCallback<ClickEvent>(ev => {
+            Debug.Log("Next Level from Victory");
+            ShowMenu(_levels_menu);
+        });
+
+        _exitButton_victory_menu.RegisterCallback<ClickEvent>(ev => {
+            Debug.Log("Exit from Victory");
+            ShowMenu(_initial_menu);
+        });
+
+        // GAME OVER MENU
+        _retry_game_over_menu.RegisterCallback<ClickEvent>(ev => {
+            Debug.Log("Retry Game");
+            ShowMenu(_game_menu);
+        });
+
+        _exitButton_game_over_menu.RegisterCallback<ClickEvent>(ev => {
+            Debug.Log("Exit from Game Over");
+            ShowMenu(_initial_menu);
         });
     }
 }
