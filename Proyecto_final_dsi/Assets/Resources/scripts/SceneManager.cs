@@ -8,7 +8,8 @@ public class SceneManager : MonoBehaviour
 {
     private VisualElement _menuContainer;
     private List<VisualElement> _allMenus = new();
-
+    private List<VisualElement> _levelButtons = new();
+    private VisualElement _blockerOverlay;
 
     VisualElement _initial_menu;
 
@@ -58,15 +59,26 @@ public class SceneManager : MonoBehaviour
         {
             item.style.display = DisplayStyle.None;
         }
+
+        _blockerOverlay.style.display = DisplayStyle.None;
     }
     private VisualElement LoadAndAddMenu(string resourceName) {
         var template = Resources.Load<VisualTreeAsset>($"templates/{resourceName}");
         var instance = template.CloneTree();
-        _menuContainer.Add(instance);
+
+        if (resourceName == "MenuNivelPeque") {
+            instance.style.position = Position.Absolute;
+            instance.style.top = 0;
+            instance.style.left = 0;
+            instance.style.right = 0;
+            instance.style.bottom = 0;
+        }
+
         instance.style.display = DisplayStyle.None;
-        _allMenus.Add(instance);
-        Debug.Log("Menu: " + resourceName);
         instance.style.flexGrow = 1;
+        _menuContainer.Add(instance);
+        _allMenus.Add(instance);
+
         return instance;
     }
 
@@ -74,18 +86,39 @@ public class SceneManager : MonoBehaviour
     {
         UIDocument uidoc = GetComponent<UIDocument>();
         VisualElement root = uidoc.rootVisualElement;
-        _menuContainer = new VisualElement();
-        _menuContainer.style.flexGrow = 1;
-        _menuContainer.style.flexDirection = FlexDirection.Column;
-        _menuContainer.style.width = Length.Percent(100);
-        _menuContainer.style.height = Length.Percent(100);
+        _menuContainer = new VisualElement {
+            style =
+           {
+                flexGrow = 1,
+                flexDirection = FlexDirection.Column,
+                width = Length.Percent(100),
+                height = Length.Percent(100)
+            }
+        };
         root.Add(_menuContainer);
 
-       
+
+        //Bloqueador para que no se pueda interactuar con los botones de los otros menus
+        _blockerOverlay = new VisualElement {
+            style =
+            {
+                position = Position.Absolute,
+                top = 0,
+                left = 0,
+                right = 0,
+                bottom = 0,
+                backgroundColor = new Color(0, 0, 0, 0),
+                display = DisplayStyle.None
+            },
+            pickingMode = PickingMode.Position
+        };
+        _menuContainer.Add(_blockerOverlay);
+
+
         // Cargar e instanciar templates
         _initial_menu = LoadAndAddMenu("MenuInicial");
         _levels_menu = LoadAndAddMenu("MenuNiveles");
-        //_game_start_menu = LoadAndAddMenu("GameStartMenu");
+        _game_start_menu = LoadAndAddMenu("MenuNivelPeque");
         _pause_menu = LoadAndAddMenu("MenuPausa");
         _victory_menu = LoadAndAddMenu("MenuVictoria");
         _game_over_menu = LoadAndAddMenu("MenuDerrota");
@@ -97,8 +130,8 @@ public class SceneManager : MonoBehaviour
         _exitButton_initial_menu = _initial_menu.Q("exitButton");
         Debug.Log("Botones del menu inicial");
         // Game Start Menu
-        //_startButton_game_start_menu = _game_start_menu.Q("startButton");
-        //_exitButton_game_start_menu = _game_start_menu.Q("exitButton");
+        _startButton_game_start_menu = _game_start_menu.Q("botonJugar");
+        _exitButton_game_start_menu = _game_start_menu.Q("botonVolver");
 
         _go_back_levels_menu = _levels_menu.Q("BotonVolver");
         _button_1_levels_menu = _levels_menu.Q("botonNivel1");
@@ -108,6 +141,20 @@ public class SceneManager : MonoBehaviour
         _button_5_levels_menu = _levels_menu.Q("botonNivel5");
         _button_6_levels_menu = _levels_menu.Q("botonNivel6");
 
+        _levelButtons.Add(_button_1_levels_menu);
+        _levelButtons.Add(_button_2_levels_menu);
+        _levelButtons.Add(_button_3_levels_menu);
+        _levelButtons.Add(_button_4_levels_menu);
+        _levelButtons.Add(_button_5_levels_menu);
+        _levelButtons.Add(_button_6_levels_menu);
+        _levelButtons.Add(_go_back_levels_menu);
+
+        RegisterLevelButton(_button_1_levels_menu, 1);
+        RegisterLevelButton(_button_2_levels_menu, 2);
+        RegisterLevelButton(_button_3_levels_menu, 3);
+        RegisterLevelButton(_button_4_levels_menu, 4);
+        RegisterLevelButton(_button_5_levels_menu, 5);
+        RegisterLevelButton(_button_6_levels_menu, 6);
 
         // Pause Menu
         _continueutton_pause_menu = _pause_menu.Q("ContinuarBoton");
@@ -140,15 +187,17 @@ public class SceneManager : MonoBehaviour
             ShowMenu(_initial_menu);
         });
         // GAME START MENU
-        //_startButton_game_start_menu.RegisterCallback<ClickEvent>(ev => {
-        //    Debug.Log("Game Start -> Game");
-        //    ShowMenu(_game_menu);
-        //});
+        _startButton_game_start_menu.RegisterCallback<ClickEvent>(ev => {
+            Debug.Log("Game Start -> Game");
+            _blockerOverlay.style.display = DisplayStyle.Flex;
+            ShowMenu(_game_menu);
+        });
 
-        //_exitButton_game_start_menu.RegisterCallback<ClickEvent>(ev => {
-        //    Debug.Log("Exit from Game Start");
-        //    ShowMenu(_initial_menu);
-        //});
+        _exitButton_game_start_menu.RegisterCallback<ClickEvent>(ev => {
+            Debug.Log("Exit from Game Start");
+            _game_start_menu.style.display = DisplayStyle.None;
+            _blockerOverlay.style.display = DisplayStyle.None;
+        });
 
         // PAUSE MENU
         //_continueutton_pause_menu.RegisterCallback<ClickEvent>(ev => {
@@ -189,5 +238,25 @@ public class SceneManager : MonoBehaviour
     private void ShowMenu(VisualElement menu) {
         HideAllMenus();
         menu.style.display = DisplayStyle.Flex;
+    }
+
+    void RegisterLevelButton(VisualElement button, int levelNumber) {
+        button.RegisterCallback<ClickEvent>(ev => {
+            Debug.Log($"Seleccionado Nivel {levelNumber}");
+
+            _blockerOverlay.style.display = DisplayStyle.Flex;
+            _game_start_menu.style.display = DisplayStyle.Flex;
+
+            Label nivelPequeLabel = _game_start_menu.Q<Label>("NivelPeque");
+            if (nivelPequeLabel != null) {
+                nivelPequeLabel.text = $"Nivel {levelNumber}";
+            }
+        });
+    }
+
+    void SetLevelButtonsInteractable(bool interactable) {
+        foreach (var btn in _levelButtons) {
+            btn.pickingMode = interactable ? PickingMode.Position : PickingMode.Ignore;
+        }
     }
 }

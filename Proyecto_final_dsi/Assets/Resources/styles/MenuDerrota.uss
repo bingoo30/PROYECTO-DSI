@@ -1,4 +1,4 @@
-.button2:hover {
+.button2 {
     justify-content: center;
     align-self: center;
     align-items: center;
@@ -21,9 +21,12 @@
     font-size: 45px;
     color: rgb(104, 78, 55);
     -unity-text-align: middle-center;
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
 }
 
-.button2 {
-    -unity-background-image-tint-color: rgb(104, 78, 55);
-    scale: 1.1 1;
+.button2:hover {
+    scale: 1.15 1.15;
 }
