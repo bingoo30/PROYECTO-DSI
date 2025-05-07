@@ -1,5 +1,5 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:Template name="MenuNiveles" src="project://database/Assets/Resources/templates/MenuNiveles.uxml?fileID=9197481963319205126&amp;guid=9a1b25222382273499485fb192858c31&amp;type=3#MenuNiveles" />
     <Style src="project://database/Assets/Resources/styles/MenuDerrota.uss?fileID=7433441132597879392&amp;guid=1dca931e780cac648bc2dfddfe03ed21&amp;type=3#MenuDerrota" />
-    <ui:Instance template="MenuNiveles" name="MenuNiveles" style="flex-grow: 1; display: flex;" />
+    <Style src="project://database/Assets/Resources/styles/menuI.uss?fileID=7433441132597879392&amp;guid=26f83cca943a7f64aa606e4eb633342a&amp;type=3#menuI" />
+    <Style src="project://database/Assets/Resources/styles/MenuNiveles.uss?fileID=7433441132597879392&amp;guid=c47568de64145c940ae7d4b688b24559&amp;type=3#MenuNiveles" />
 </ui:UXML>
