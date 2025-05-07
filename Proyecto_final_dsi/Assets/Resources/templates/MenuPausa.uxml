@@ -4,6 +4,7 @@
         <ui:VisualElement name="Fondo" style="flex-grow: 1; background-color: rgba(56, 56, 56, 0); width: 100%; background-image: resource(&apos;sprites/EscenaPausa&apos;); justify-content: center; align-self: center; align-items: center; flex-wrap: wrap; flex-direction: column; height: 100%;">
             <ui:VisualElement name="EspacioBlanco" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); height: 11%; min-height: 10%; min-width: 10%; max-height: 16%;" />
             <ui:Button text="Continuar" display-tooltip-when-elided="true" name="ContinuarBoton" class="button2" style="width: 16%; height: 15%;" />
+            <ui:Button text="Victoria" display-tooltip-when-elided="true" name="VictoriaBoton" class="button2" style="width: 16%; height: 15%;" />
             <ui:Button text="Salir" display-tooltip-when-elided="true" name="SalirBoton" class="button2" style="width: 16%; height: 15%;" />
         </ui:VisualElement>
     </ui:VisualElement>

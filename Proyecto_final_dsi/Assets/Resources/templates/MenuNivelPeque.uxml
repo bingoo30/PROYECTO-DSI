@@ -1,13 +1,14 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/Resources/styles/MenuNiveles2.uss?fileID=7433441132597879392&amp;guid=73eec54a6e6a95443978bf12d392a81f&amp;type=3#MenuNiveles2" />
     <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); align-items: center; justify-content: center;">
         <ui:VisualElement name="MenuNivelPeque" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); background-image: resource(&apos;sprites/MenuNivelPeque&apos;); justify-content: center; align-items: center; width: 50%; height: 90%; padding-left: 100px; padding-right: 100px; padding-top: 100px; padding-bottom: 100px;">
             <StarCustomControls style="width: 80%; height: 30%;" />
-            <ui:Label tabindex="-1" text="Nivel 1" display-tooltip-when-elided="true" name="NivelPeque" class="levelName" style="width: 60%; height: 10%;" />
+            <ui:Label tabindex="-1" text="Nivel 1" display-tooltip-when-elided="true" name="NivelPeque" class="levelName text" style="width: 60%; height: 10%;" />
             <ui:VisualElement name="botonJugar" class="button" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); background-image: resource(&apos;sprites/botonResto&apos;); width: 50%; height: 20%; align-self: center; justify-content: center; align-items: center;">
-                <ui:Label tabindex="-1" text="Jugar" display-tooltip-when-elided="true" class="levelName" style="font-size: 80%; -unity-text-align: middle-center;" />
+                <ui:Label tabindex="-1" text="Jugar" display-tooltip-when-elided="true" class="levelName text" />
             </ui:VisualElement>
             <ui:VisualElement name="botonVolver" class="button" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); background-image: resource(&apos;sprites/botonResto&apos;); width: 50%; height: 20%; align-self: center; justify-content: center; align-items: center;">
-                <ui:Label tabindex="-1" text="Volver" display-tooltip-when-elided="true" class="levelName" style="font-size: 80%; -unity-text-align: middle-center;" />
+                <ui:Label tabindex="-1" text="Volver" display-tooltip-when-elided="true" class="levelName text" style="font-size: 80%; -unity-text-align: middle-center;" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>

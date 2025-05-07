@@ -1,0 +1,6 @@
+.text {
+    font-size: 500%;
+    -unity-text-align: middle-center;
+    -unity-font: url("project://database/Assets/Fonts/Pixelify_Sans,VT323/Pixelify_Sans/static/PixelifySans-Regular.ttf?fileID=12800000&guid=7f9066c36a80cd44f9e20ed8dc28eaed&type=3#PixelifySans-Regular");
+    -unity-font-definition: initial;
+}
