@@ -1,10 +1,10 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
     <Style src="project://database/Assets/UI%20Toolkit/menuI.uss?fileID=7433441132597879392&amp;guid=26f83cca943a7f64aa606e4eb633342a&amp;type=3#menuI" />
-    <ui:VisualElement name="Container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/Sprites/MenuPrincipal.png?fileID=2800000&amp;guid=69675bfb357899e47867e0f1e98a7b9d&amp;type=3#MenuPrincipal&apos;); cursor: initial;">
+    <ui:VisualElement name="Container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/Resources/sprites/MenuPrincipal.png?fileID=2800000&amp;guid=69675bfb357899e47867e0f1e98a7b9d&amp;type=3#MenuPrincipal&apos;); cursor: initial;">
         <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 40%;" />
         <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
-            <ui:Button text="Jugar" display-tooltip-when-elided="true" name="jugar" class="botonI" />
-            <ui:Button text="Salir" display-tooltip-when-elided="true" name="salir" class="botonI" style="top: 20%;" />
+            <ui:Button text="Jugar" display-tooltip-when-elided="true" name="startButton" class="botonI" />
+            <ui:Button text="Salir" display-tooltip-when-elided="true" name="exitButton" class="botonI" style="top: 20%;" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

@@ -1,0 +1,54 @@
+.vidaMoneda {
+    flex-grow: 0;
+    background-color: rgba(0, 0, 0, 0);
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 18%;
+    height: 45%;
+    background-image: resource('sprites/vidaMoneda');
+    left: auto;
+    right: auto;
+    top: auto;
+    bottom: 25%;
+}
+
+.estrella_rellena {
+    flex-grow: 0;
+    background-color: rgba(0, 0, 0, 0);
+    width: 32%;
+    height: 100%;
+    background-image: resource('sprites/star');
+    -unity-background-scale-mode: scale-and-crop;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.pausa {
+    flex-grow: 0;
+    background-color: rgba(0, 0, 0, 0);
+    width: 4%;
+    height: 17%;
+    background-image: resource('sprites/pausa');
+    -unity-background-scale-mode: stretch-to-fill;
+    left: 62%;
+    bottom: 38%;
+}
+
+.pausa:hover {
+    flex-grow: 0;
+    background-color: rgba(0, 0, 0, 0);
+    width: 4%;
+    height: 17%;
+    background-image: resource('sprites/pausa');
+    -unity-background-scale-mode: stretch-to-fill;
+    left: 62%;
+    bottom: 38%;
+    -unity-background-image-tint-color: rgb(214, 214, 214);
+    transition-duration: 0.1s;
+    transition-timing-function: ease-in-out-bounce;
+    scale: 1.15 0.85;
+    transition-delay: 0s;
+    translate: 0 -2px;
+}
