@@ -4,6 +4,6 @@
         <ui:VisualElement name="VisualElement" class="levelName" style="flex-grow: initial; background-color: rgba(0, 0, 0, 0); width: auto; height: 60%;">
             <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="Nivel" class="levelName" />
         </ui:VisualElement>
-        <StarCustomControls />
+        <StarCustomControls style="align-items: center; justify-content: flex-start;" />
     </ui:VisualElement>
 </ui:UXML>

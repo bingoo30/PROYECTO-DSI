@@ -1,5 +1,38 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:Template name="MenuNiveles" src="project://database/Assets/Resources/templates/MenuNiveles.uxml?fileID=9197481963319205126&amp;guid=9a1b25222382273499485fb192858c31&amp;type=3#MenuNiveles" />
+    <ui:Template name="botonNivel" src="project://database/Assets/Resources/templates/botonNivel.uxml?fileID=9197481963319205126&amp;guid=2e3ce543f0526ed4eacb6ff9c0087935&amp;type=3#botonNivel" />
     <Style src="project://database/Assets/Resources/styles/MenuNiveles.uss?fileID=7433441132597879392&amp;guid=c47568de64145c940ae7d4b688b24559&amp;type=3#MenuNiveles" />
-    <ui:Instance template="MenuNiveles" name="MenuNiveles" style="flex-grow: 1;" />
+    <ui:VisualElement name="MenuNiveles" style="flex-grow: 1;">
+        <ui:VisualElement name="MenuNiveles" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); background-image: resource(&apos;sprites/MenuNiveles&apos;); align-items: center;">
+            <ui:VisualElement name="margenBotonVolver" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); padding-left: 50px; padding-right: 50px; padding-top: 50px; padding-bottom: 0; flex-direction: row;">
+                <ui:VisualElement name="BotonVolver" class="button" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); background-image: resource(&apos;sprites/botonVolver&apos;); width: 150px; height: 150px; min-width: 50px; min-height: 50px; max-width: 150px; max-height: 150px;" />
+                <ui:VisualElement name="Relleno" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); width: 70%;" />
+                <ui:Label tabindex="-1" text="0" display-tooltip-when-elided="true" name="NumeroEstrellas" style="-unity-font: url(&apos;project://database/Assets/Fonts/Pixelify_Sans,VT323/Pixelify_Sans/static/PixelifySans-Bold.ttf?fileID=12800000&amp;guid=dde4f97a0640a5943baa8ef187bbaff8&amp;type=3#PixelifySans-Bold&apos;); -unity-font-definition: initial; font-size: 120px; -unity-text-align: upper-center; -unity-text-outline-color: rgb(219, 221, 72); color: rgb(250, 223, 10);" />
+                <ui:VisualElement name="Estrella" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); background-image: resource(&apos;sprites/star&apos;); width: 150px; height: 150px; max-width: 150px; max-height: 150px; min-width: 50px; min-height: 50px;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="Botones" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: column; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; flex-wrap: wrap; align-items: flex-start; justify-content: center;">
+                <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row; justify-content: center;">
+                    <ui:Instance template="botonNivel" name="botonNivel1" class="button" style="width: auto;">
+                        <AttributeOverrides element-name="Nivel" text="1" />
+                    </ui:Instance>
+                    <ui:Instance template="botonNivel" name="botonNivel2" class="button">
+                        <AttributeOverrides element-name="Nivel" text="2" />
+                    </ui:Instance>
+                    <ui:Instance template="botonNivel" name="botonNivel3" class="button">
+                        <AttributeOverrides element-name="Nivel" text="3" />
+                    </ui:Instance>
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row; justify-content: center;">
+                    <ui:Instance template="botonNivel" name="botonNivel4" class="button">
+                        <AttributeOverrides element-name="Nivel" text="4" />
+                    </ui:Instance>
+                    <ui:Instance template="botonNivel" name="botonNivel5" class="button">
+                        <AttributeOverrides element-name="Nivel" text="5" />
+                    </ui:Instance>
+                    <ui:Instance template="botonNivel" name="botonNivel6" class="button">
+                        <AttributeOverrides element-name="Nivel" text="6" />
+                    </ui:Instance>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
 </ui:UXML>
