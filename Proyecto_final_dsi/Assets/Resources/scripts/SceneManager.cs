@@ -79,7 +79,7 @@ public class SceneManager : MonoBehaviour
         _initial_menu = LoadAndAddMenu("InitialMenu");
         _levels_menu = LoadAndAddMenu("LevelsMenu");
         _game_start_menu = LoadAndAddMenu("GameStartMenu");
-        _pause_menu = LoadAndAddMenu("PauseMenu");
+        _pause_menu = LoadAndAddMenu("MenuPausa");
         _victory_menu = LoadAndAddMenu("MenuVictoria");
         _game_over_menu = LoadAndAddMenu("MenuDerrota");
         _game_menu = LoadAndAddMenu("GameMenu");

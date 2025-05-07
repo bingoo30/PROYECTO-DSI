@@ -1,7 +1,7 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
     <Style src="project://database/Assets/Resources/styles/MenuDerrota.uss?fileID=7433441132597879392&amp;guid=1dca931e780cac648bc2dfddfe03ed21&amp;type=3#MenuDerrota" />
     <ui:VisualElement name="MenuVictoria" style="height: 100%; width: 100%;">
-        <ui:VisualElement name="Fondo" style="flex-grow: 1; background-color: rgba(56, 56, 56, 0); width: 100%; background-image: url(&apos;project://database/Assets/Resources/sprites/MenuVictoria.png?fileID=2800000&amp;guid=94faf1701135239419da81fa4ffce8c9&amp;type=3#MenuVictoria&apos;); justify-content: center; align-self: center; align-items: center; flex-wrap: wrap; flex-direction: column; height: 100%;">
+        <ui:VisualElement name="Fondo" style="flex-grow: 1; background-color: rgba(56, 56, 56, 0); width: 100%; background-image: resource(&apos;sprites/EscenaPausa&apos;); justify-content: center; align-self: center; align-items: center; flex-wrap: wrap; flex-direction: column; height: 100%;">
             <ui:VisualElement name="EspacioBlanco" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); height: 11%; min-height: 10%; min-width: 10%; max-height: 16%;" />
             <ui:Button text="Siguiente" display-tooltip-when-elided="true" name="SiguienteBoton" class="button" />
             <ui:Button text="Salir" display-tooltip-when-elided="true" name="SalirBoton" class="button" />
