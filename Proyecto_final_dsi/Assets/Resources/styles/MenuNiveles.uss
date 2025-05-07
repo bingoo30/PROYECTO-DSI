@@ -22,7 +22,7 @@
 
 .levelName {
     font-size: 150px;
-    -unity-font: url("project://database/Assets/Fonts/Pixelify_Sans,VT323/Pixelify_Sans/static/PixelifySans-SemiBold.ttf?fileID=12800000&guid=26549cc23fe40114a9ebc1df39d34557&type=3#PixelifySans-SemiBold");
+    -unity-font: url('project://database/Assets/Fonts/Pixelify_Sans,VT323/Pixelify_Sans/static/PixelifySans-SemiBold.ttf?fileID=12800000&guid=26549cc23fe40114a9ebc1df39d34557&type=3#PixelifySans-SemiBold');
     -unity-font-definition: initial;
     flex-grow: 1;
     -unity-text-align: upper-center;
@@ -31,9 +31,9 @@
     -unity-text-outline-color: rgb(255, 255, 255);
 }
 
-.button:hover {
+.button {
 }
 
-.button {
+.button :hover {
     scale: 1.1 1.1;
 }

@@ -11,7 +11,7 @@ public class StarCustomControls : VisualElement
         get => v;
         set
         {
-            v = value;
+            v = Mathf.Clamp(value, 0, 3);
             mostrarValor();
         }
     }
