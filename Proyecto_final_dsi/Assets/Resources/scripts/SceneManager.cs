@@ -37,6 +37,7 @@ public class SceneManager : MonoBehaviour
     VisualElement _pause_menu;
     VisualElement _continuebutton_pause_menu;
     VisualElement _exitButton_pause_menu;
+    VisualElement _victory_pause_menu;
 
     VisualElement _victory_menu;
     VisualElement _next_victory_menu;
@@ -159,6 +160,7 @@ public class SceneManager : MonoBehaviour
         // Pause Menu
         _continuebutton_pause_menu = _pause_menu.Q("ContinuarBoton");
         _exitButton_pause_menu = _pause_menu.Q("SalirBoton");
+        _victory_pause_menu = _pause_menu.Q("VictoriaBoton");
         Debug.Log("Botones del menu de pausa");
 
         // Victory Menu
@@ -221,6 +223,12 @@ public class SceneManager : MonoBehaviour
             ShowMenu(_game_over_menu);
         });
 
+        _victory_pause_menu.RegisterCallback<ClickEvent>(ev => {
+            Debug.Log("Exit from Pause to Victory");
+            _pause_menu.style.display = DisplayStyle.None;
+            _blockerOverlay.style.display = DisplayStyle.None;
+            ShowMenu(_victory_menu);
+        });
         //// VICTORY MENU
         //_next_victory_menu.RegisterCallback<ClickEvent>(ev => {
         //    Debug.Log("Next Level from Victory");
