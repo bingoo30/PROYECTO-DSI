@@ -10,6 +10,7 @@ public class SceneManager : MonoBehaviour
     private List<VisualElement> _allMenus = new();
     private List<VisualElement> _levelButtons = new();
     private VisualElement _blockerOverlay;
+    private int _currentLevel = 0;
 
     VisualElement _initial_menu;
 
@@ -26,7 +27,7 @@ public class SceneManager : MonoBehaviour
     VisualElement _button_6_levels_menu;
     VisualElement _go_back_levels_menu;
 
-
+    
 
     VisualElement _game_start_menu;
     VisualElement _startButton_game_start_menu;
@@ -125,7 +126,7 @@ public class SceneManager : MonoBehaviour
 
         _pause_menu = LoadAndAddMenu("MenuPausa");
 
-        // Botones Menú Inicial
+        // Botones Men?Inicial
         _startButton_initial_menu = _initial_menu.Q("startButton");
         _exitButton_initial_menu = _initial_menu.Q("exitButton");
         Debug.Log("Botones del menu inicial");
@@ -254,6 +255,7 @@ public class SceneManager : MonoBehaviour
     void RegisterLevelButton(VisualElement button, int levelNumber) {
         button.RegisterCallback<ClickEvent>(ev => {
             Debug.Log($"Seleccionado Nivel {levelNumber}");
+            _currentLevel = levelNumber;
 
             _blockerOverlay.style.display = DisplayStyle.Flex;
             _game_start_menu.style.display = DisplayStyle.Flex;
