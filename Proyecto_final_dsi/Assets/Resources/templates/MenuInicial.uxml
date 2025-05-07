@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement name="Container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); background-image: url(&quot;project://database/Assets/Resources/sprites/MenuPrincipal.png?fileID=2800000&amp;guid=69675bfb357899e47867e0f1e98a7b9d&amp;type=3#MenuPrincipal&quot;); cursor: initial;">
+        <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 48%;" />
+        <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+            <ui:Button text="Jugar" display-tooltip-when-elided="true" name="startButton" class="botonI" />
+            <ui:Button text="Salir" display-tooltip-when-elided="true" name="exitButton" class="botonI" style="top: 20%;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
