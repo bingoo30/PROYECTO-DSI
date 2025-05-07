@@ -81,34 +81,7 @@ public class SceneManager : MonoBehaviour
         _menuContainer.style.height = Length.Percent(100);
         root.Add(_menuContainer);
 
-
-        var styleSheet = Resources.Load<StyleSheet>("styles/MenuDerrota");
-        var styleSheet1 = Resources.Load<StyleSheet>("styles/menuI");
-        var styleSheet2 = Resources.Load<StyleSheet>("styles/MenuNiveles");
-        if (styleSheet != null) {
-            root.styleSheets.Add(styleSheet);
-            Debug.Log("Estilo MenuDerrota.uss cargado correctamente.");
-        } else {
-            Debug.LogWarning("No se encontró MenuDerrota.uss en Resources/styles/");
-        }
-        if (styleSheet1 != null)
-        {
-            root.styleSheets.Add(styleSheet1);
-            Debug.Log("Estilo MenuDerrota.uss cargado correctamente.");
-        }
-        else
-        {
-            Debug.LogWarning("No se encontró MenuDerrota.uss en Resources/styles/");
-        }
-        if (styleSheet2 != null)
-        {
-            root.styleSheets.Add(styleSheet2);
-            Debug.Log("Estilo MenuDerrota.uss cargado correctamente.");
-        }
-        else
-        {
-            Debug.LogWarning("No se encontró MenuDerrota.uss en Resources/styles/");
-        }
+       
         // Cargar e instanciar templates
         _initial_menu = LoadAndAddMenu("MenuInicial");
         _levels_menu = LoadAndAddMenu("MenuNiveles");

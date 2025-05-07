@@ -31,9 +31,9 @@
     -unity-text-outline-color: rgb(255, 255, 255);
 }
 
-.button {
+.button2 {
 }
 
-.button :hover {
+.button2 :hover {
     scale: 1.1 1.1;
 }

@@ -1,4 +1,4 @@
-.button {
+.button2:hover {
     justify-content: center;
     align-self: center;
     align-items: center;
@@ -14,8 +14,8 @@
     margin-bottom: -5px;
     max-height: 74%;
     background-color: rgba(0, 0, 0, 0);
-    background-image: url('project://database/Assets/Resources/sprites/botonResto.png?fileID=2800000&guid=c8f22222fee1dc2449cfaaf2364f5758&type=3#botonResto');
-    -unity-font: url('project://database/Assets/Fonts/Pixelify_Sans,VT323/Pixelify_Sans/static/PixelifySans-SemiBold.ttf?fileID=12800000&guid=26549cc23fe40114a9ebc1df39d34557&type=3#PixelifySans-SemiBold');
+    background-image: url("project://database/Assets/Resources/sprites/botonResto.png?fileID=2800000&guid=c8f22222fee1dc2449cfaaf2364f5758&type=3#botonResto");
+    -unity-font: url("project://database/Assets/Fonts/Pixelify_Sans,VT323/Pixelify_Sans/static/PixelifySans-SemiBold.ttf?fileID=12800000&guid=26549cc23fe40114a9ebc1df39d34557&type=3#PixelifySans-SemiBold");
     -unity-font-style: normal;
     -unity-font-definition: initial;
     font-size: 45px;
@@ -23,7 +23,7 @@
     -unity-text-align: middle-center;
 }
 
-.button:hover {
+.button2 {
     -unity-background-image-tint-color: rgb(104, 78, 55);
     scale: 1.1 1;
 }
