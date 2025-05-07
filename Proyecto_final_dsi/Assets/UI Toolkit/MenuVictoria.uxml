@@ -1,12 +1,5 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="MenuVictoria" src="project://database/Assets/Resources/templates/MenuVictoria.uxml?fileID=9197481963319205126&amp;guid=0a498cfc45ef53848887770d1f440fd3&amp;type=3#MenuVictoria" />
     <Style src="project://database/Assets/UI%20Toolkit/MenuDerrota.uss?fileID=7433441132597879392&amp;guid=1dca931e780cac648bc2dfddfe03ed21&amp;type=3#MenuDerrota" />
-    <ui:VisualElement name="MenuVictoria" style="height: 100%; width: 100%;">
-        <ui:VisualElement name="MenuDerrota" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
-            <ui:VisualElement name="Fondo" style="flex-grow: 1; background-color: rgba(56, 56, 56, 0); width: 807px; background-image: url(&apos;project://database/Assets/Sprites/MenuVictoria.png?fileID=2800000&amp;guid=94faf1701135239419da81fa4ffce8c9&amp;type=3#MenuVictoria&apos;); justify-content: center; align-self: center; align-items: center; flex-wrap: wrap; flex-direction: column;">
-                <ui:VisualElement name="EspacioBlanco" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); height: 11%; min-height: 10%; min-width: 10%; max-height: 16%;" />
-                <ui:Button text="Siguiente" display-tooltip-when-elided="true" name="SiguienteBoton" class="button" />
-                <ui:Button text="Salir" display-tooltip-when-elided="true" name="SalirBoton" class="button" style="-unity-text-align: middle-center; font-size: 32px;" />
-            </ui:VisualElement>
-        </ui:VisualElement>
-    </ui:VisualElement>
+    <ui:Instance template="MenuVictoria" name="MenuVictoria" />
 </ui:UXML>

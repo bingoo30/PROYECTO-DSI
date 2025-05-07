@@ -6,7 +6,8 @@ using UnityEngine.UIElements;
 
 public class SceneManager : MonoBehaviour
 {
-    private List<VisualElement> _all_visual_elements = new List<VisualElement>();
+    private VisualElement _menuContainer;
+    private List<VisualElement> _allMenus = new();
     VisualElement _initial_menu;
 
     VisualElement _startButton_initial_menu;
@@ -42,25 +43,20 @@ public class SceneManager : MonoBehaviour
 
 
 
-    private void NoContenido()
+    private void HideAllMenus()
     {
-        foreach (var item in _all_visual_elements)
+        foreach (var item in _allMenus)
         {
             item.style.display = DisplayStyle.None;
         }
     }
-
-    private void NoContenidoSttings() {
-        _contenidoYellow.style.display = DisplayStyle.None;
-        _contenidoGreen.style.display = DisplayStyle.None;
-        _contenidoBlue.style.display = DisplayStyle.None;
-    }
-
-    private void backToInitial() {
-        _initial.style.display = DisplayStyle.Flex;
-        //_startButton.style.display = DisplayStyle.Flex;
-        //_settingsButton.style.display = DisplayStyle.Flex;
-        //_exitButton.style.display = DisplayStyle.Flex;
+    private VisualElement LoadAndAddMenu(string resourceName) {
+        var template = Resources.Load<VisualTreeAsset>($"templates/{resourceName}");
+        var instance = template.CloneTree();
+        _menuContainer.Add(instance);
+        instance.style.display = DisplayStyle.None;
+        _allMenus.Add(instance);
+        return instance;
     }
 
     private void OnEnable()
@@ -69,24 +65,16 @@ public class SceneManager : MonoBehaviour
         VisualElement root = uidoc.rootVisualElement;
 
 
-        VisualTreeAsset visualTreeAsset = Resources.Load<VisualTreeAsset>("templates/MenuDerrota");
+        // Cargar e instanciar templates
+        _initial_menu = LoadAndAddMenu("InitialMenu");
+        _levels_menu = LoadAndAddMenu("LevelsMenu");
+        _game_start_menu = LoadAndAddMenu("GameStartMenu");
+        _pause_menu = LoadAndAddMenu("PauseMenu");
+        _victory_menu = LoadAndAddMenu("MenuVictoria");
+        _game_over_menu = LoadAndAddMenu("MenuDerrota");
+        _game_menu = LoadAndAddMenu("GameMenu");
 
-        _initial_menu = root.Q<VisualElement>("InitialMenu");
-        _levels_menu = root.Q<VisualElement>("LevelsMenu");
-        _game_start_menu = root.Q<VisualElement>("GameStartMenu");
-        _pause_menu = root.Q<VisualElement>("PauseMenu");
-        _victory_menu = root.Q<VisualElement>("VictoryMenu");
-        _game_over_menu = root.Q<VisualElement>("GameOverMenu");
-        _game_menu = root.Q<VisualElement>("GameMenu");
 
-
-        _all_visual_elements.AddRange(new[]
-        {     
-            _initial_menu, _levels_menu, _game_start_menu,
-            _pause_menu, _victory_menu, _game_over_menu, _game_menu
-        });
-
-     
         // Botones Menú Inicial
         _startButton_initial_menu = _initial_menu.Q("startButton");
         _exitButton_initial_menu = _initial_menu.Q("exitButton");
@@ -161,5 +149,10 @@ public class SceneManager : MonoBehaviour
             Debug.Log("Exit from Game Over");
             ShowMenu(_initial_menu);
         });
+    }
+
+    private void ShowMenu(VisualElement menu) {
+        HideAllMenus();
+        menu.style.display = DisplayStyle.Flex;
     }
 }
