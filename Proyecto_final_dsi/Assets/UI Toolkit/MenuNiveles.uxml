@@ -1,4 +1,5 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/Resources/MenuNiveles.uss?fileID=7433441132597879392&amp;guid=c47568de64145c940ae7d4b688b24559&amp;type=3#MenuNiveles" />
-    <StarCustomControls valor="0" focusable="true" style="width: 20%;" />
+    <ui:Template name="MenuNiveles" src="project://database/Assets/Resources/templates/MenuNiveles.uxml?fileID=9197481963319205126&amp;guid=9a1b25222382273499485fb192858c31&amp;type=3#MenuNiveles" />
+    <Style src="project://database/Assets/Resources/styles/MenuNiveles.uss?fileID=7433441132597879392&amp;guid=c47568de64145c940ae7d4b688b24559&amp;type=3#MenuNiveles" />
+    <ui:Instance template="MenuNiveles" name="MenuNiveles" />
 </ui:UXML>
