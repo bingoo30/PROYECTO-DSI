@@ -48,7 +48,7 @@ public class flechaController : MonoBehaviour
         VisualElement document = GetComponent<UIDocument>().rootVisualElement;
         //referenciar la lista de elementos
         bichosContainers = document.Q<VisualElement>("bichos").Children().ToList();
-        antes = document.Q<Button>("antes");
+        antes = document.Q<Button>("ante");
         despues = document.Q<Button>("despues");
 
         despues.RegisterCallback<ClickEvent>(e =>

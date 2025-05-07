@@ -12,7 +12,7 @@
         </ui:VisualElement>
         <ui:VisualElement name="parteAbajo" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row;">
             <ui:VisualElement name="barraEleccion" class="elegir" style="top: 57%;">
-                <ui:Button display-tooltip-when-elided="true" name="antes" class="flecha" />
+                <ui:Button display-tooltip-when-elided="true" name="ante" class="flecha" />
                 <ui:VisualElement name="bichos" style="flex-grow: 1; flex-direction: row; flex-basis: 76%;">
                     <ui:VisualElement name="bichitos1" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-basis: 90%; flex-direction: row; display: flex;">
                         <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="pepe" class="iconoAnimal" />
@@ -29,7 +29,11 @@
                 </ui:VisualElement>
                 <ui:Button display-tooltip-when-elided="true" name="despues" class="flecha" style="background-image: resource(&apos;sprites/flechaD&apos;); left: auto; right: 5%;" />
             </ui:VisualElement>
-            <ui:VisualElement style="flex-grow: 0; width: 20%; height: 25%;" />
+            <ui:VisualElement name="mejora" style="flex-grow: 0; width: 16%; height: 24%; background-image: resource(&apos;sprites/mejora&apos;); opacity: 0.9; -unity-background-scale-mode: scale-and-crop; left: 23%; top: 2%; flex-direction: row;">
+                <NumberCustomController value="4" focusable="false" class="text" style="width: 11%; height: 26%; left: 50%; font-size: 40px; color: rgb(196, 155, 0); -unity-text-outline-color: rgb(74, 47, 0); text-shadow: 0 5px 0 rgb(154, 97, 66); top: 32%;" />
+                <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="si" class="sino" />
+                <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="no" class="sino" style="margin-top: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; background-image: resource(&apos;sprites/cruz&apos;);" />
+            </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
