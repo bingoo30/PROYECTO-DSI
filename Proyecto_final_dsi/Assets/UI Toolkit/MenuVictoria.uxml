@@ -1,5 +1,5 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="MenuVictoria" src="project://database/Assets/Resources/templates/MenuVictoria.uxml?fileID=9197481963319205126&amp;guid=0a498cfc45ef53848887770d1f440fd3&amp;type=3#MenuVictoria" />
-    <Style src="project://database/Assets/UI%20Toolkit/MenuDerrota.uss?fileID=7433441132597879392&amp;guid=1dca931e780cac648bc2dfddfe03ed21&amp;type=3#MenuDerrota" />
-    <ui:Instance template="MenuVictoria" name="MenuVictoria" />
+    <Style src="project://database/Assets/Resources/styles/MenuDerrota.uss?fileID=7433441132597879392&amp;guid=1dca931e780cac648bc2dfddfe03ed21&amp;type=3#MenuDerrota" />
+    <ui:Instance template="MenuVictoria" name="MenuVictoria" style="flex-grow: 1;" />
 </ui:UXML>
