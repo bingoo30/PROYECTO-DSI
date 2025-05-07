@@ -1,0 +1,91 @@
+.vidaMoneda {
+    flex-grow: 0;
+    background-color: rgba(0, 0, 0, 0);
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 18%;
+    height: 45%;
+    background-image: resource('sprites/vidaMoneda');
+    left: auto;
+    right: auto;
+    top: auto;
+    bottom: 25%;
+}
+
+.estrella_rellena {
+    flex-grow: 0;
+    background-color: rgba(0, 0, 0, 0);
+    width: 32%;
+    height: 100%;
+    background-image: resource('sprites/star');
+    -unity-background-scale-mode: scale-and-crop;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.pausa {
+    flex-grow: 0;
+    background-color: rgba(0, 0, 0, 0);
+    width: 4%;
+    height: 17%;
+    background-image: resource('sprites/pausa');
+    -unity-background-scale-mode: stretch-to-fill;
+    left: 62%;
+    bottom: 38%;
+}
+
+.pausa:hover {
+    flex-grow: 0;
+    background-color: rgba(0, 0, 0, 0);
+    width: 4%;
+    height: 17%;
+    background-image: resource('sprites/pausa');
+    -unity-background-scale-mode: stretch-to-fill;
+    left: 62%;
+    bottom: 38%;
+    -unity-background-image-tint-color: rgb(214, 214, 214);
+    transition-duration: 0.1s;
+    transition-timing-function: ease-in-out-bounce;
+    scale: 1.15 0.85;
+    transition-delay: 0s;
+    translate: 0 -2px;
+}
+
+.elegir {
+    flex-grow: 0;
+    background-color: rgba(0, 0, 0, 0);
+    flex-basis: 57.5%;
+    height: 45%;
+    background-image: resource('sprites/barraElegir');
+    width: auto;
+    top: 54%;
+    flex-direction: row;
+}
+
+.flecha {
+    background-image: resource('sprites/flecha');
+    -unity-background-scale-mode: scale-to-fit;
+    background-color: rgba(255, 255, 255, 0);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    flex-grow: 0;
+    flex-basis: auto;
+    scale: 1 1;
+    right: auto;
+    width: 7.5%;
+    height: 20%;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    left: 4.5%;
+    top: 42.5%;
+}
