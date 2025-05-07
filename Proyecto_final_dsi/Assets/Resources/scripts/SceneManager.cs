@@ -79,7 +79,7 @@ public class SceneManager : MonoBehaviour
         _initial_menu = LoadAndAddMenu("InitialMenu");
         _levels_menu = LoadAndAddMenu("LevelsMenu");
         _game_start_menu = LoadAndAddMenu("GameStartMenu");
-        _pause_menu = LoadAndAddMenu("PauseMenu");
+        _pause_menu = LoadAndAddMenu("MenuPausa");
         _victory_menu = LoadAndAddMenu("MenuVictoria");
         _game_over_menu = LoadAndAddMenu("MenuDerrota");
         _game_menu = LoadAndAddMenu("GameMenu");
@@ -94,8 +94,8 @@ public class SceneManager : MonoBehaviour
         _exitButton_game_start_menu = _game_start_menu.Q("exitButton");
 
         // Pause Menu
-        _continueutton_pause_menu = _pause_menu.Q("continueButton");
-        _exitButton_pause_menu = _pause_menu.Q("exitButton");
+        _continueutton_pause_menu = _pause_menu.Q("ContinuarBoton");
+        _exitButton_pause_menu = _pause_menu.Q("SalirButton");
 
         // Victory Menu
         _next_victory_menu = _victory_menu.Q("SiguienteBoton");
