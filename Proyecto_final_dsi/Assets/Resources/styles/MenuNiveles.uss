@@ -1,0 +1,6 @@
+.star {
+    min-width: 50px;
+    min-height: 50px;
+    width: 100px;
+    height: 100px;
+}
