@@ -8,6 +8,8 @@ public class SceneManager : MonoBehaviour
 {
     private VisualElement _menuContainer;
     private List<VisualElement> _allMenus = new();
+
+
     VisualElement _initial_menu;
 
     VisualElement _startButton_initial_menu;
@@ -63,7 +65,15 @@ public class SceneManager : MonoBehaviour
     {
         UIDocument uidoc = GetComponent<UIDocument>();
         VisualElement root = uidoc.rootVisualElement;
-
+        _menuContainer = new VisualElement();
+        root.Add(_menuContainer);
+        var styleSheet = Resources.Load<StyleSheet>("styles/MenuDerrota");
+        if (styleSheet != null) {
+            root.styleSheets.Add(styleSheet);
+            Debug.Log("Estilo MenuDerrota.uss cargado correctamente.");
+        } else {
+            Debug.LogWarning("No se encontró MenuDerrota.uss en Resources/styles/");
+        }
 
         // Cargar e instanciar templates
         _initial_menu = LoadAndAddMenu("InitialMenu");
@@ -88,12 +98,12 @@ public class SceneManager : MonoBehaviour
         _exitButton_pause_menu = _pause_menu.Q("exitButton");
 
         // Victory Menu
-        _next_victory_menu = _victory_menu.Q("nextButton");
-        _exitButton_victory_menu = _victory_menu.Q("exitButton");
+        _next_victory_menu = _victory_menu.Q("SiguienteBoton");
+        _exitButton_victory_menu = _victory_menu.Q("SalirButton");
 
         // Game Over Menu
-        _retry_game_over_menu = _game_over_menu.Q("retryButton");
-        _exitButton_game_over_menu = _game_over_menu.Q("exitButton");
+        _retry_game_over_menu = _game_over_menu.Q("ReintentarBoton");
+        _exitButton_game_over_menu = _game_over_menu.Q("SalirButton");
 
 
         _startButton_initial_menu.RegisterCallback<ClickEvent>(ev => {
