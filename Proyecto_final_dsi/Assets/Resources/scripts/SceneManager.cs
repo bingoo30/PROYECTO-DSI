@@ -1,3 +1,4 @@
+using stars_namespace;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,10 @@ public class SceneManager : MonoBehaviour
     private List<VisualElement> _allMenus = new();
     private List<VisualElement> _levelButtons = new();
     private VisualElement _blockerOverlay;
+
+    private StarCustomControls _starSelector;
+    private StarCustomControls _gameStartStars;
+    private int _selectedStars = 0;
     private int _currentLevel = 0;
 
     VisualElement _initial_menu;
@@ -53,7 +58,17 @@ public class SceneManager : MonoBehaviour
 
     VisualElement _game_menu;
     VisualElement _pause_game_menu;
- 
+
+    //menu de niveles
+    private Label _estrellaTotal;
+    private List<NivelData> _niveles;
+
+    public class NivelData
+    {
+        public int nivel;
+        public int estrellas;
+    }
+
 
     private void HideAllMenus()
     {
@@ -134,6 +149,7 @@ public class SceneManager : MonoBehaviour
         // Game Start Menu
         _startButton_game_start_menu = _game_start_menu.Q("botonJugar");
         _exitButton_game_start_menu = _game_start_menu.Q("botonVolver");
+        _gameStartStars = _game_start_menu.Q<StarCustomControls>();
 
         _go_back_levels_menu = _levels_menu.Q("BotonVolver");
         _button_1_levels_menu = _levels_menu.Q("botonNivel1");
@@ -231,15 +247,27 @@ public class SceneManager : MonoBehaviour
             ShowMenu(_victory_menu);
         });
         //// VICTORY MENU
-        //_next_victory_menu.RegisterCallback<ClickEvent>(ev => {
-        //    Debug.Log("Next Level from Victory");
-        //    ShowMenu(_levels_menu);
-        //});
+        _starSelector = _victory_menu.Q<StarCustomControls>();
+        if (_starSelector != null)
+        {
+            _starSelector.Interactivo = true;
+            _starSelector.OnValueChanged += HandleStarSelection;
+            _starSelector.Valor = 0;
+        }
 
-        //_exitButton_victory_menu.RegisterCallback<ClickEvent>(ev => {
-        //    Debug.Log("Exit from Victory");
-        //    ShowMenu(_initial_menu);
-        //});
+        _next_victory_menu.RegisterCallback<ClickEvent>(ev =>
+        {
+            Debug.Log("Next Level from Victory");
+            SaveStars();
+            ShowMenu(_levels_menu);
+        });
+
+        _exitButton_victory_menu.RegisterCallback<ClickEvent>(ev =>
+        {
+            Debug.Log("Exit from Victory");
+            ResetStarSelector();
+            ShowMenu(_initial_menu);
+        });
 
         // GAME OVER MENU
         _retry_game_over_menu.RegisterCallback<ClickEvent>(ev => {
@@ -251,6 +279,10 @@ public class SceneManager : MonoBehaviour
             Debug.Log("Exit from Game Over");
             ShowMenu(_initial_menu);
         });
+
+        //menu NIVELES
+        _estrellaTotal = _levels_menu.Q<Label>("NumeroEstrellas");
+        InitializeLevelMenu();
 
         ShowMenu(_initial_menu);
     }
@@ -272,6 +304,132 @@ public class SceneManager : MonoBehaviour
             if (nivelPequeLabel != null) {
                 nivelPequeLabel.text = $"Nivel {levelNumber}";
             }
+            if (_gameStartStars != null)
+            {
+                var nivelData = _niveles.Find(n => n.nivel == levelNumber);
+                if (nivelData != null)
+                {
+                    _gameStartStars.Valor = nivelData.estrellas;
+                }
+            }
         });
     }
+    private void HandleStarSelection(int starCount)
+    {
+        _selectedStars = starCount;
+        Debug.Log($"Estrellas seleccionadas: {_selectedStars}");
+    }
+    private void SaveStars()
+    {
+        if (_currentLevel > 0 && _selectedStars > 0)
+        {
+            // Actualizar datos locales
+            int index = _currentLevel - 1;
+            if (index >= 0 && index < _niveles.Count)
+            {
+                _niveles[index].estrellas = _selectedStars;
+            }
+
+            // Guardar en JSON
+            JsonHelperEstrellas.SaveStars(_currentLevel, _selectedStars);
+
+            // Actualizar UI
+            updateEstrellasNivel(_currentLevel);
+            UpdateTotalStars();
+        }
+
+        ResetStarSelector();
+    }
+    private void ResetStarSelector()
+    {
+        _selectedStars = 0;
+        if (_starSelector != null)
+        {
+            _starSelector.Valor = 0;
+            _starSelector.Interactivo = true;
+        }
+    }
+
+    private void InitializeLevelMenu()
+    {
+        // Cargar datos existentes
+        var datosJSON = JsonHelperEstrellas.LoadAllStars();
+        if (_niveles == null)
+        {
+            _niveles = new List<NivelData>();
+        }
+        else
+        {
+            _niveles.Clear();
+        }
+
+
+        foreach (var estrellaNivel in datosJSON.niveles)
+        {
+            _niveles.Add(new NivelData
+            {
+                nivel = estrellaNivel.nivel,
+                estrellas = estrellaNivel.estrellas
+            });
+        }
+
+        //si no hay nada del json, inicializar por defecto
+        if (_niveles.Count == 0)
+        {
+            for (int i = 1; i <= 6; i++)
+            {
+                _niveles.Add(new NivelData { nivel = i, estrellas = 0 });
+                JsonHelperEstrellas.SaveStars(i, 0);
+            }
+        }
+
+        ConfigurarEstrellas();
+        UpdateTotalStars();
+    }
+    private void updateEstrellasNivel(int levelNumber)
+    {
+        string templateActual = $"botonNivel{levelNumber}";
+        var template = _levels_menu.Q<TemplateContainer>(templateActual);
+
+        if (template != null)
+        {
+            var estrellasControl = template.Q<StarCustomControls>();
+            if (estrellasControl != null)
+            {
+                estrellasControl.Valor = _selectedStars;
+            }
+        }
+    }
+    private void ConfigurarEstrellas()
+    {
+        for (int i = 0; i < _niveles.Count; i++)
+        {
+            var nivel = _niveles[i];
+            string nombreTemplate = $"botonNivel{nivel.nivel}";
+
+            VisualElement template = _levels_menu.Q<VisualElement>(nombreTemplate);
+
+            if (template != null)
+            {
+                var contenedor = template.Q<VisualElement>("botonNivel");
+                // Estrellas
+                StarCustomControls estrellas = contenedor.Q<StarCustomControls>();
+                if (estrellas != null)
+                {
+                    estrellas.Valor = nivel.estrellas >= 0 ? nivel.estrellas : 0;
+                    estrellas.Interactivo = false;
+                }
+            }
+        }
+    }
+    private void UpdateTotalStars()
+    {
+        int total = 0;
+        foreach (var nivel in _niveles)
+        {
+            total += nivel.estrellas;
+        }
+        _estrellaTotal.text = total.ToString();
+    }
+
 }
