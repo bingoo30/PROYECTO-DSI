@@ -11,7 +11,11 @@
             <ui:Button display-tooltip-when-elided="true" name="botonPausa" class="pausa" style="left: 61.75%; border-left-color: rgba(255, 255, 255, 0); border-right-color: rgba(255, 255, 255, 0); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0;" />
         </ui:VisualElement>
         <ui:VisualElement name="parteAbajo" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row;">
-            <ui:VisualElement name="barraEleccion" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-basis: 57.5%; height: 45%; background-image: resource(&apos;sprites/barraElegir&apos;); width: auto; top: 54%;" />
+            <ui:VisualElement name="barraEleccion" class="elegir" style="top: 57%;">
+                <ui:Button display-tooltip-when-elided="true" name="antes" class="flecha" />
+                <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-basis: 76%;" />
+                <ui:Button display-tooltip-when-elided="true" class="flecha" style="background-image: resource(&apos;sprites/flechaD&apos;);" />
+            </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
