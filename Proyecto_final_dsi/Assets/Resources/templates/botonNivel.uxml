@@ -1,7 +1,7 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
     <Style src="project://database/Assets/Resources/styles/MenuNiveles.uss?fileID=7433441132597879392&amp;guid=c47568de64145c940ae7d4b688b24559&amp;type=3#MenuNiveles" />
-    <ui:VisualElement name="botonNivel" class="levelButton" style="flex-direction: column;">
-        <ui:VisualElement class="levelName" style="flex-grow: initial; background-color: rgba(0, 0, 0, 0); width: auto; height: 60%;">
+    <ui:VisualElement name="botonNivel" class="levelButton" style="flex-direction: column; width: 250px; height: 250px; min-width: 50px; min-height: 50px;">
+        <ui:VisualElement name="VisualElement" class="levelName" style="flex-grow: initial; background-color: rgba(0, 0, 0, 0); width: auto; height: 60%;">
             <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="Nivel" class="levelName" />
         </ui:VisualElement>
         <StarCustomControls />
