@@ -1,8 +1,9 @@
 .star {
     min-width: 50px;
     min-height: 50px;
-    width: 100px;
-    height: 100px;
+    width: 100%;
+    height: 400%;
+    align-self: stretch;
 }
 
 .levelButton {
