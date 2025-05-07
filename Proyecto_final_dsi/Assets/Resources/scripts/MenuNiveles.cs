@@ -14,10 +14,11 @@ public class MenuNiveles : MonoBehaviour
 {
     private List<NivelData> niveles = new List<NivelData>();
     private VisualElement root;
-
+    private Label estrellaTotal;
     private void OnEnable()
     {
         root = GetComponent<UIDocument>().rootVisualElement;
+        estrellaTotal = root.Q<Label>("NumeroEstrellas");
 
         var datosJSON = JsonHelperEstrellas.LoadAllStars();
         foreach (var estrellaNivel in datosJSON.niveles)
@@ -34,9 +35,20 @@ public class MenuNiveles : MonoBehaviour
             InicializarNivelesPorDefecto();
         }
 
+        estrellaTotal.text = NumEstrellas().ToString();
+
         ConfigurarTemplatesExistentes();
     }
+    private int NumEstrellas()
+    {
+        int num = 0;
+        foreach (var nivel in niveles)
+        {
+            num += nivel.estrellas;
+        }
+        return num;
 
+    }
     private void InicializarNivelesPorDefecto()
     {
         for (int i = 1; i <= 6; i++)
