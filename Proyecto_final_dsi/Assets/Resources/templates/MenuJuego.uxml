@@ -1,0 +1,21 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/juego.uss?fileID=7433441132597879392&amp;guid=e0633b7173160ea4da8be3f50c7cbdc6&amp;type=3#juego" />
+    <ui:VisualElement name="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); background-image: resource(&apos;sprites/MenuJuego&apos;);">
+        <ui:VisualElement name="parteArriba" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); white-space: normal; justify-content: flex-start; align-items: center; flex-direction: row; flex-basis: 40%;">
+            <ui:VisualElement name="vidaMonedas" class="vidaMoneda" />
+            <ui:VisualElement name="estrellas" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); align-items: auto; width: auto; height: 20%; flex-basis: 15%; flex-direction: row; flex-wrap: wrap-reverse; left: 62%; bottom: 40%;">
+                <ui:VisualElement name="estrella1" class="estrella_rellena" />
+                <ui:VisualElement name="estrella2" class="estrella_rellena" />
+                <ui:VisualElement name="estrella3" class="estrella_rellena" />
+            </ui:VisualElement>
+            <ui:Button display-tooltip-when-elided="true" name="botonPausa" class="pausa" style="left: 61.75%; border-left-color: rgba(255, 255, 255, 0); border-right-color: rgba(255, 255, 255, 0); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="parteAbajo" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row;">
+            <ui:VisualElement name="barraEleccion" class="elegir" style="top: 57%;">
+                <ui:Button display-tooltip-when-elided="true" name="antes" class="flecha" />
+                <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-basis: 76%;" />
+                <ui:Button display-tooltip-when-elided="true" class="flecha" style="background-image: resource(&apos;sprites/flechaD&apos;);" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

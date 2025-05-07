@@ -35,7 +35,7 @@ public class SceneManager : MonoBehaviour
 
 
     VisualElement _pause_menu;
-    VisualElement _continueutton_pause_menu;
+    VisualElement _continuebutton_pause_menu;
     VisualElement _exitButton_pause_menu;
 
     VisualElement _victory_menu;
@@ -50,8 +50,8 @@ public class SceneManager : MonoBehaviour
 
 
     VisualElement _game_menu;
-
-
+    VisualElement _pause_game_menu;
+ 
 
     private void HideAllMenus()
     {
@@ -66,7 +66,7 @@ public class SceneManager : MonoBehaviour
         var template = Resources.Load<VisualTreeAsset>($"templates/{resourceName}");
         var instance = template.CloneTree();
 
-        if (resourceName == "MenuNivelPeque") {
+        if (resourceName == "MenuNivelPeque" || resourceName == "MenuPausa") {
             instance.style.position = Position.Absolute;
             instance.style.top = 0;
             instance.style.left = 0;
@@ -119,11 +119,11 @@ public class SceneManager : MonoBehaviour
         _initial_menu = LoadAndAddMenu("MenuInicial");
         _levels_menu = LoadAndAddMenu("MenuNiveles");
         _game_start_menu = LoadAndAddMenu("MenuNivelPeque");
-        _pause_menu = LoadAndAddMenu("MenuPausa");
         _victory_menu = LoadAndAddMenu("MenuVictoria");
         _game_over_menu = LoadAndAddMenu("MenuDerrota");
-        //_game_menu = LoadAndAddMenu("GameMenu");
+        _game_menu = LoadAndAddMenu("MenuJuego");
 
+        _pause_menu = LoadAndAddMenu("MenuPausa");
 
         // Botones Menú Inicial
         _startButton_initial_menu = _initial_menu.Q("startButton");
@@ -157,20 +157,21 @@ public class SceneManager : MonoBehaviour
         RegisterLevelButton(_button_6_levels_menu, 6);
 
         // Pause Menu
-        _continueutton_pause_menu = _pause_menu.Q("ContinuarBoton");
-        _exitButton_pause_menu = _pause_menu.Q("SalirButton");
+        _continuebutton_pause_menu = _pause_menu.Q("ContinuarBoton");
+        _exitButton_pause_menu = _pause_menu.Q("SalirBoton");
         Debug.Log("Botones del menu de pausa");
 
         // Victory Menu
         _next_victory_menu = _victory_menu.Q("SiguienteBoton");
-        _exitButton_victory_menu = _victory_menu.Q("SalirButton");
+        _exitButton_victory_menu = _victory_menu.Q("SalirBoton");
         Debug.Log("Botones del menu de victoria");
 
         // Game Over Menu
         _retry_game_over_menu = _game_over_menu.Q("ReintentarBoton");
-        _exitButton_game_over_menu = _game_over_menu.Q("SalirButton");
+        _exitButton_game_over_menu = _game_over_menu.Q("SalirBoton");
         Debug.Log("Botones del menu de derrota");
 
+        _pause_game_menu = _game_menu.Q("botonPausa");
 
         _startButton_initial_menu.RegisterCallback<ClickEvent>(ev => {
             Debug.Log("Start -> Game Start Menu");
@@ -199,16 +200,26 @@ public class SceneManager : MonoBehaviour
             _blockerOverlay.style.display = DisplayStyle.None;
         });
 
-        // PAUSE MENU
-        //_continueutton_pause_menu.RegisterCallback<ClickEvent>(ev => {
-        //    Debug.Log("Continue from Pause");
-        //    ShowMenu(_game_menu);
-        //});
+        _pause_game_menu.RegisterCallback<ClickEvent>(ev => {
+            Debug.Log("Going to pause menu");
+            _blockerOverlay.style.display = DisplayStyle.Flex;
+            _pause_menu.style.display = DisplayStyle.Flex;
+        });
 
-        //_exitButton_pause_menu.RegisterCallback<ClickEvent>(ev => {
-        //    Debug.Log("Exit from Pause to Initial");
-        //    ShowMenu(_initial_menu);
-        //});
+
+        // PAUSE MENU
+        _continuebutton_pause_menu.RegisterCallback<ClickEvent>(ev => {
+            Debug.Log("Continue from Pause");
+            _pause_menu.style.display = DisplayStyle.None;
+            _blockerOverlay.style.display = DisplayStyle.None;
+        });
+
+        _exitButton_pause_menu.RegisterCallback<ClickEvent>(ev => {
+            Debug.Log("Exit from Pause to Initial");
+            _pause_menu.style.display = DisplayStyle.None;
+            _blockerOverlay.style.display = DisplayStyle.None;
+            ShowMenu(_game_over_menu);
+        });
 
         //// VICTORY MENU
         //_next_victory_menu.RegisterCallback<ClickEvent>(ev => {
@@ -221,16 +232,16 @@ public class SceneManager : MonoBehaviour
         //    ShowMenu(_initial_menu);
         //});
 
-        //// GAME OVER MENU
-        //_retry_game_over_menu.RegisterCallback<ClickEvent>(ev => {
-        //    Debug.Log("Retry Game");
-        //    ShowMenu(_game_menu);
-        //});
+        // GAME OVER MENU
+        _retry_game_over_menu.RegisterCallback<ClickEvent>(ev => {
+            Debug.Log("Retry Game");
+            ShowMenu(_game_menu);
+        });
 
-        //_exitButton_game_over_menu.RegisterCallback<ClickEvent>(ev => {
-        //    Debug.Log("Exit from Game Over");
-        //    ShowMenu(_initial_menu);
-        //});
+        _exitButton_game_over_menu.RegisterCallback<ClickEvent>(ev => {
+            Debug.Log("Exit from Game Over");
+            ShowMenu(_initial_menu);
+        });
 
         ShowMenu(_initial_menu);
     }
@@ -252,11 +263,5 @@ public class SceneManager : MonoBehaviour
                 nivelPequeLabel.text = $"Nivel {levelNumber}";
             }
         });
-    }
-
-    void SetLevelButtonsInteractable(bool interactable) {
-        foreach (var btn in _levelButtons) {
-            btn.pickingMode = interactable ? PickingMode.Position : PickingMode.Ignore;
-        }
     }
 }
