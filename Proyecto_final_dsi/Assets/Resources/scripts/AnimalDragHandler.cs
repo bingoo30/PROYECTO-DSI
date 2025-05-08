@@ -57,7 +57,7 @@ public class AnimalDragHandler : PointerManipulator
             // Convertir a coordenadas de mundo (z = 0 para 2D)
             Vector3 worldPos = Camera.main.ScreenToWorldPoint(new Vector3(screenPos.x, Screen.height - screenPos.y, Camera.main.nearClipPlane));
             worldPos.z = 0; // aseguramos que esté en el plano 2D
-
+            _animalInstance.layer = 6;
             _animalInstance = GameObject.Instantiate(animalPrefab, worldPos, Quaternion.identity);
             _animalInstance.GetComponent<SpriteRenderer>().sortingOrder = 1;
         }
