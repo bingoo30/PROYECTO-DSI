@@ -102,14 +102,18 @@
     -unity-background-scale-mode: stretch-to-fill;
     flex-basis: auto;
     background-color: rgba(188, 188, 188, 0);
-    border-top-width: 0;
-    border-right-width: 0;
-    border-bottom-width: 0;
-    border-left-width: 0;
+    border-top-width: 5px;
+    border-right-width: 5px;
+    border-bottom-width: 5px;
+    border-left-width: 5px;
     height: 55%;
     width: 20%;
     left: 8.5%;
     top: 24%;
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
 }
 
 .sino {
@@ -148,7 +152,7 @@
     border-bottom-width: 0;
     border-left-width: 0;
     background-color: rgba(0, 0, 0, 0);
-    rotate: 15deg;
+    rotate: -15deg;
     -unity-background-image-tint-color: rgb(197, 197, 197);
     scale: 1.5 1.2;
     transition-timing-function: ease-in-out-sine;
