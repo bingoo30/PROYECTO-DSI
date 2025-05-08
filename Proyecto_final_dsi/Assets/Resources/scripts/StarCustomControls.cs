@@ -3,19 +3,34 @@ using UnityEngine.UIElements;
 
 public class StarCustomControls : VisualElement
 {
+    public event System.Action<int> OnValueChanged;
+
     VisualElement container = new VisualElement();
     Texture2D star;
-    int v;
+    private int currentValue;
+    private bool isInteractive;
     public int Valor
     {
-        get => v;
+        get => currentValue;
         set
         {
-            v = Mathf.Clamp(value, 0, 3);
-            mostrarValor();
+            int newValue = Mathf.Clamp(value, 0, 3);
+            if (newValue != currentValue)
+            {
+                currentValue = newValue;
+                mostrarValor();
+            }
         }
     }
-
+    public bool Interactivo
+    {
+        get => isInteractive;
+        set
+        {
+            isInteractive = value;
+            esInteractivo();
+        }
+    }
     void mostrarValor()
     {
         container.Clear();
@@ -28,7 +43,7 @@ public class StarCustomControls : VisualElement
 
             elemento.style.backgroundImage = star;
 
-            if (i < v)
+            if (i < currentValue)
             {
                 elemento.style.unityBackgroundImageTintColor = Color.white;
             }
@@ -41,16 +56,41 @@ public class StarCustomControls : VisualElement
         }
     }
 
+    private void esInteractivo()
+    {
+        foreach (var star in container.Children())
+        {
+            star.UnregisterCallback<ClickEvent>(OnStarClicked);
+
+            if (isInteractive)
+            {
+                star.RegisterCallback<ClickEvent>(OnStarClicked);
+            }
+        }
+    }
+    private void OnStarClicked(ClickEvent evt)
+    {
+        var start = evt.currentTarget as VisualElement;
+        int clickedStar = container.IndexOf(start) + 1;
+
+        Valor = (Valor == clickedStar) ? clickedStar - 1 : clickedStar;
+        OnValueChanged?.Invoke(Valor);
+
+        evt.StopPropagation();
+    }
+
     public new class UxmlFactory : UxmlFactory<StarCustomControls, UxmlTraits> { };
     public new class UxmlTraits : VisualElement.UxmlTraits
     {
         UxmlIntAttributeDescription myValor = new UxmlIntAttributeDescription { name = "valor", defaultValue = 0 };
+        UxmlBoolAttributeDescription myInteractive= new UxmlBoolAttributeDescription { name = "interactivo", defaultValue = false };
 
         public override void Init(VisualElement ve, IUxmlAttributes bag, CreationContext cc)
         {
             base.Init(ve, bag, cc);
             var star = ve as StarCustomControls;
             star.Valor = myValor.GetValueFromBag(bag, cc);
+            star.Interactivo=myInteractive.GetValueFromBag(bag,cc);
         }
     }
 

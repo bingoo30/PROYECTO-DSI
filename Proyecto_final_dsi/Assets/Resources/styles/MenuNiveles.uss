@@ -1,8 +1,8 @@
 .star {
-    min-width: 50px;
-    min-height: 50px;
+    min-width: 40px;
+    min-height: 40px;
     width: 100%;
-    height: 400%;
+    height: 300%;
     align-self: stretch;
 }
 
@@ -22,7 +22,7 @@
 
 .levelName {
     font-size: 150px;
-    -unity-font: url('project://database/Assets/Fonts/Pixelify_Sans,VT323/Pixelify_Sans/static/PixelifySans-SemiBold.ttf?fileID=12800000&guid=26549cc23fe40114a9ebc1df39d34557&type=3#PixelifySans-SemiBold');
+    -unity-font: url("project://database/Assets/Fonts/Pixelify_Sans,VT323/Pixelify_Sans/static/PixelifySans-SemiBold.ttf?fileID=12800000&guid=26549cc23fe40114a9ebc1df39d34557&type=3#PixelifySans-SemiBold");
     -unity-font-definition: initial;
     flex-grow: 1;
     -unity-text-align: upper-center;

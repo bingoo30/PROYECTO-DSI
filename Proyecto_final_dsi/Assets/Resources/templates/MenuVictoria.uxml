@@ -1,7 +1,7 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
     <ui:VisualElement name="MenuVictoria" style="height: 100%; width: 100%;">
         <ui:VisualElement name="Fondo" style="flex-grow: 1; background-color: rgba(56, 56, 56, 0); width: 100%; background-image: url(&quot;project://database/Assets/Resources/sprites/MenuVictoria.png?fileID=2800000&amp;guid=94faf1701135239419da81fa4ffce8c9&amp;type=3#MenuVictoria&quot;); justify-content: center; align-self: center; align-items: center; flex-wrap: wrap; flex-direction: column; height: 100%;">
-            <StarCustomControls style="width: 50%; height: 20%; align-items: stretch; justify-content: flex-start;" />
+            <StarCustomControls style="width: 40%; height: 20%; align-items: stretch; justify-content: flex-start;" />
             <ui:Button text="Siguiente" display-tooltip-when-elided="true" name="SiguienteBoton" class="button2" />
             <ui:Button text="Salir" display-tooltip-when-elided="true" name="SalirBoton" class="button2" />
         </ui:VisualElement>
