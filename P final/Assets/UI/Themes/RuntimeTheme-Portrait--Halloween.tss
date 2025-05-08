@@ -1,5 +1,0 @@
-@import url("RuntimeTheme-Portrait.tss");
-
-@import url("/Assets/UI/Uss/ThemeStyles/Decoration-Halloween.uss");
-
-VisualElement {}
