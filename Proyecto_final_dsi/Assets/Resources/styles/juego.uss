@@ -102,10 +102,10 @@
     -unity-background-scale-mode: stretch-to-fill;
     flex-basis: auto;
     background-color: rgba(188, 188, 188, 0);
-    border-top-width: 5px;
-    border-right-width: 5px;
-    border-bottom-width: 5px;
-    border-left-width: 5px;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
     height: 55%;
     width: 20%;
     left: 8.5%;
