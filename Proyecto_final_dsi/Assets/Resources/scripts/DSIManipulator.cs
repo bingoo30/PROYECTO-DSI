@@ -19,7 +19,6 @@ public class DSIManipulator : MouseManipulator
     {
         if (CanStartManipulation(mev))
         {
-            Debug.Log(target.name + ": Click en Elemento");
 
             // Obtener el contenedor padre
             VisualElement parent = target.parent;
@@ -43,7 +42,7 @@ public class DSIManipulator : MouseManipulator
         //element.style.borderTopColor = Color.white;
         //element.style.borderBottomColor = Color.white;
         Texture2D tex = Resources.Load<Texture2D>("sprites/selection");
-        Debug.Log(tex);
+
         VisualElement overlay = new VisualElement();
         overlay.style.position = Position.Absolute;
         overlay.style.top = 0;
@@ -54,7 +53,6 @@ public class DSIManipulator : MouseManipulator
         overlay.name = "selectionOverlay";
 
         element.Add(overlay);
-        Debug.Log(overlay.name);
     }
 
     private void ResetSelection(VisualElement element)
